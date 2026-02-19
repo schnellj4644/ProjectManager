@@ -101,7 +101,7 @@ export const TaskAssigneesSelector = ({
             : `${selectedIds.length} Selected`}
         </button>
         {dropDownOpen && (
-          <div className="absolute z-10 mt-1 w-full bg-primary border rounded shadow-lg max-h-60 overflow-y-auto">
+          <div className="absolute z-10 mt-1 w-full bg-primary-foreground border rounded shadow-lg max-h-60 overflow-y-auto">
             <div className="flex justify-between px-2 py-1 border-b">
               <button
                 className="text-xs text-blue-600"
