@@ -1,7 +1,7 @@
 import { useAuth } from "@/provider/auth-context";
 import type { Workspace } from "@/types";
 import { Button } from "../ui/button";
-import { Bell, PlusCircle } from "lucide-react";
+import { Bell, Moon, PlusCircle, Sun } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +14,7 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router";
 import { WorkspaceAvatar } from "../workspace/workspace-avatar";
+import useTheme from "@/hooks/use-theme";
 
 interface HeaderProps {
   onWorkspaceSelected: (workspace: Workspace) => void;
@@ -27,7 +28,7 @@ export const Header = ({
   onCreateWorkspace,
 }: HeaderProps) => {
   const navigate = useNavigate();
-
+  const [theme, toggleTheme] = useTheme();
   const { user, logout } = useAuth();
   const { workspaces } = useLoaderData() as { workspaces: Workspace[] };
   const isOnWorkspacePage = useLocation().pathname.includes("/workspace");
@@ -95,14 +96,21 @@ export const Header = ({
         </DropdownMenu>
 
         <div className="flex items-center gap-2">
+          <Button variant={"ghost"} size="icon" onClick={toggleTheme}>
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4" />
+            ) : (
+              <Moon className="w-4 h-4" />
+            )}
+          </Button>
           <Button variant="ghost" size="icon">
             <Bell />
           </Button>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="rounded-full border p-1 w-8 h-8">
-                <Avatar className="w-8 h-8">
+              <button className="rounded-full border p-1">
+                <Avatar className="">
                   <AvatarImage src={user?.profilePicture} alt={user?.name} />
                   <AvatarFallback className="bg-primary text-primary-foreground">
                     {user?.name?.charAt(0).toUpperCase()}
