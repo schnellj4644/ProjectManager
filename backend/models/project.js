@@ -1,4 +1,4 @@
-import mongoose, { Schema, trusted } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const projectSchema = new Schema(
   {
@@ -7,10 +7,7 @@ const projectSchema = new Schema(
       required: true,
       trim: true,
     },
-    description: {
-      type: String,
-      trim: true,
-    },
+    description: { type: String, trim: true },
     workspace: {
       type: Schema.Types.ObjectId,
       ref: "Workspace",
@@ -21,12 +18,8 @@ const projectSchema = new Schema(
       enum: ["Planning", "In Progress", "On Hold", "Completed", "Cancelled"],
       default: "Planning",
     },
-    startDate: {
-      type: Date,
-    },
-    dueDate: {
-      type: Date,
-    },
+    startDate: { type: Date },
+    dueDate: { type: Date },
     progress: { type: Number, min: 0, max: 100, default: 0 },
     tasks: [{ type: Schema.Types.ObjectId, ref: "Task" }],
     members: [

@@ -136,7 +136,7 @@ export const CreateProjectDialog = ({
               name="status"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project Description</FormLabel>
+                  <FormLabel>Project Status</FormLabel>
                   <FormControl>
                     <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger className="w-full">
@@ -367,6 +367,7 @@ export const CreateProjectDialog = ({
                         </PopoverContent>
                       </Popover>
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 );
               }}

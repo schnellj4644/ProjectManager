@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import type { LucideIcon } from "lucide-react";
-import { useLocation, useNavigate } from "react-router";
-import { Button } from "../ui/button";
 import type { Workspace } from "@/types";
+import type { LucideIcon } from "lucide-react";
+import { Button } from "../ui/button";
+import { useLocation, useNavigate } from "react-router";
 
 interface SidebarNavProps extends React.HtmlHTMLAttributes<HTMLElement> {
   items: {
@@ -14,7 +14,6 @@ interface SidebarNavProps extends React.HtmlHTMLAttributes<HTMLElement> {
   currentWorkspace: Workspace | null;
   className?: string;
 }
-
 export const SidebarNav = ({
   items,
   isCollapsed,
@@ -26,7 +25,7 @@ export const SidebarNav = ({
   const navigate = useNavigate();
 
   return (
-    <nav className={cn("flex flex-col gap-y2", className)} {...props}>
+    <nav className={cn("flex flex-col gap-y-2", className)} {...props}>
       {items.map((el) => {
         const Icon = el.icon;
         const isActive = location.pathname === el.href;

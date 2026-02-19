@@ -35,7 +35,7 @@ const createProject = async (req, res) => {
       tags: tagArray,
       workspace: workspaceId,
       members,
-      createBy: req.user._id,
+      createdBy: req.user._id,
     });
 
     workspace.projects.push(newProject._id);

@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { ChartLine, ChartPie } from "lucide-react";
+import { ChartBarBig, ChartLine, ChartPie } from "lucide-react";
 import {
   ChartContainer,
   ChartLegend,
@@ -52,7 +52,7 @@ export const StatisticsCharts = ({
     <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
       <Card className="lg:col-span-2">
         <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <div className="space-7-0.5">
+          <div className="space-y-0.5">
             <CardTitle className="text-base font-medium">Task Trends</CardTitle>
             <CardDescription>Daily task status changes</CardDescription>
           </div>
@@ -63,9 +63,9 @@ export const StatisticsCharts = ({
             <ChartContainer
               className="h-[300px]"
               config={{
-                completed: { color: "#10b981" },
-                inProgress: { color: "#f59e0b" },
-                todo: { color: "#3b82f6" },
+                completed: { color: "#10b981" }, // green
+                inProgress: { color: "#f59e0b" }, // blue
+                todo: { color: "#3b82f6" }, // gray
               }}
             >
               <LineChart data={taskTrendsData}>
@@ -82,8 +82,10 @@ export const StatisticsCharts = ({
                   tickLine={false}
                   axisLine={false}
                 />
+
                 <CartesianGrid strokeDasharray={"3 3"} vertical={false} />
                 <ChartTooltip />
+
                 <Line
                   type="monotone"
                   dataKey={"completed"}
@@ -93,34 +95,40 @@ export const StatisticsCharts = ({
                 />
                 <Line
                   type="monotone"
-                  dataKey={"inProgress"}
+                  dataKey="inProgress"
                   stroke="#3b82f6"
                   strokeWidth={2}
                   dot={{ r: 4 }}
                 />
                 <Line
                   type="monotone"
-                  dataKey={"todo"}
+                  dataKey="todo"
                   stroke="#6b7280"
                   strokeWidth={2}
                   dot={{ r: 4 }}
                 />
+
                 <ChartLegend content={<ChartLegendContent />} />
               </LineChart>
             </ChartContainer>
           </div>
         </CardContent>
       </Card>
+
+      {/* project status  */}
+
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <div className="space-7-0.5">
+          <div className="space-y-0.5">
             <CardTitle className="text-base font-medium">
               Project Status
             </CardTitle>
             <CardDescription>Project status breakdown</CardDescription>
           </div>
+
           <ChartPie className="size-5 text-muted-foreground" />
         </CardHeader>
+
         <CardContent className="w-full overflow-x-auto md:overflow-x-hidden">
           <div className="min-w-[350px]">
             <ChartContainer
@@ -157,16 +165,18 @@ export const StatisticsCharts = ({
           </div>
         </CardContent>
       </Card>
+
+      {/* task priority  */}
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <div className="space-7-0.5">
+          <div className="space-y-0.5">
             <CardTitle className="text-base font-medium">
               Task Priority
             </CardTitle>
             <CardDescription>Task priority breakdown</CardDescription>
           </div>
-          <ChartPie className="size-5 text-muted-foreground" />
         </CardHeader>
+
         <CardContent className="w-full overflow-x-auto md:overflow-x-hidden">
           <div className="min-w-[350px]">
             <ChartContainer
@@ -182,17 +192,17 @@ export const StatisticsCharts = ({
                   data={taskPriorityData}
                   cx="50%"
                   cy="50%"
-                  dataKey="value"
-                  nameKey="name"
                   innerRadius={60}
                   outerRadius={80}
                   paddingAngle={2}
+                  dataKey="value"
+                  nameKey="name"
                   label={({ name, percent }) =>
-                    `${name} (${(percent * 100).toFixed(0)}%)`
+                    `${name} ${(percent * 100).toFixed(0)}%`
                   }
                   labelLine={false}
                 >
-                  {taskPriorityData.map((entry, index) => (
+                  {taskPriorityData?.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
@@ -203,15 +213,17 @@ export const StatisticsCharts = ({
           </div>
         </CardContent>
       </Card>
-      <Card>
+
+      {/* Workspace Productivity Chart */}
+      <Card className="lg:col-span-2">
         <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <div className="space-7-0.5">
+          <div className="space-y-0.5">
             <CardTitle className="text-base font-medium">
               Workspace Productivity
             </CardTitle>
             <CardDescription>Task completion by project</CardDescription>
           </div>
-          <ChartPie className="size-5 text-muted-foreground" />
+          <ChartBarBig className="h-5 w-5 text-muted-foreground" />
         </CardHeader>
         <CardContent className="w-full overflow-x-auto md:overflow-x-hidden">
           <div className="min-w-[350px]">
@@ -244,7 +256,7 @@ export const StatisticsCharts = ({
                 <ChartTooltip content={<ChartTooltipContent />} />
                 <Bar
                   dataKey="total"
-                  fill="#6b7280"
+                  fill="#000"
                   radius={[4, 4, 0, 0]}
                   name="Total Tasks"
                 />

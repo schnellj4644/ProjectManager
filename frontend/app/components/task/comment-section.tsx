@@ -5,7 +5,7 @@ import {
 import type { Comment, User } from "@/types";
 import { useState } from "react";
 import { toast } from "sonner";
-import { Loader } from "../ui/loader";
+import { Loader } from "../loader";
 import { ScrollArea } from "../ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { formatDistanceToNow } from "date-fns";
