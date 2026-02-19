@@ -32,7 +32,7 @@ export const ProjectCard = ({
             <CardTitle>{project.title}</CardTitle>
             <span
               className={cn(
-                "text-xs rounded-full",
+                "text-xs rounded-full px-2",
                 getTaskStatusColor(project.status),
               )}
             >

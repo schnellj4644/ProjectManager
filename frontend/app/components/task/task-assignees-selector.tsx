@@ -78,7 +78,7 @@ export const TaskAssigneesSelector = ({
             .map((m) => (
               <div
                 key={m.user._id}
-                className="flex items-center bg-gray-100 rounded px-2 py-1"
+                className="flex items-center bg-accent-foreground rounded px-2 py-1"
               >
                 <Avatar className="size-6 mr-1">
                   <AvatarImage src={m.user.profilePicture} />
@@ -93,7 +93,7 @@ export const TaskAssigneesSelector = ({
       </div>
       <div className="relative">
         <button
-          className="text-sm text-muted-foreground w-full border rounded px-3 py-2 text-left bg-white"
+          className="text-sm text-muted-foreground w-full border rounded px-3 py-2 text-left bg-primary-foreground"
           onClick={() => setDropDownOpen(!dropDownOpen)}
         >
           {selectedIds.length === 0
