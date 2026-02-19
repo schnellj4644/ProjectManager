@@ -59,7 +59,7 @@ export const StatisticsCharts = ({
           <ChartLine className="size-5 text-muted-foreground" />
         </CardHeader>
         <CardContent className="w-full overflow-x-auto md:overflow-x-hidden">
-          <div className="min-w-[350px]">
+          <div className="min-w-[300px]">
             <ChartContainer
               className="h-[300px]"
               config={{
