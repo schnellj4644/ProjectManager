@@ -78,7 +78,7 @@ export const TaskAssigneesSelector = ({
             .map((m) => (
               <div
                 key={m.user._id}
-                className="flex items-center bg-accent-foreground rounded px-2 py-1"
+                className="flex items-center bg-accent rounded px-2 py-1"
               >
                 <Avatar className="size-6 mr-1">
                   <AvatarImage src={m.user.profilePicture} />
