@@ -42,7 +42,7 @@ app.use("/api-v1", routes);
 app.use((err, req, res, next) => {
   console.log(err.stack);
   res.status(500).json({
-    message: "Internal Server Error",
+    message: "Internal Server Error (Generic)",
   });
 });
 
