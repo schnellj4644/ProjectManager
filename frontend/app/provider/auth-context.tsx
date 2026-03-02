@@ -28,19 +28,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const checkAuth = async () => {
       setIsLoading(true);
 
-      const user = localStorage.getItem("user");
-      if (user) {
-        setUser(JSON.parse(user));
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
+      try {
+        const storedUser = localStorage.getItem("user");
 
-        if (!isPublicRoute) {
-          navigate("/sign-in");
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+          setIsAuthenticated(true);
+        } else {
+          setUser(null);
+          setIsAuthenticated(false);
+          if (!isPublicRoute) {
+            navigate("/sign-in");
+          }
         }
+      } catch (error) {
+        console.error("Auth check failed:", error);
+      } finally {
+        setIsLoading(false);
       }
-
-      setIsLoading(false);
     };
     checkAuth();
   }, []);
