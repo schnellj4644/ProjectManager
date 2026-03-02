@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const workspaceSchema = new Schema(
+const workspaceModel = new Schema(
   {
     name: {
       type: String,
@@ -33,6 +33,6 @@ const workspaceSchema = new Schema(
   { timestamps: true },
 );
 
-const Workspace = mongoose.model("Workspace", workspaceSchema);
+const Workspace = mongoose.model("Workspace", workspaceModel);
 
 export default Workspace;
