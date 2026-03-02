@@ -72,7 +72,7 @@ export const SidebarComponent = ({
             <div className="flex items-center gap-2">
               <Wrench className="size-6 text-blue-600" />
               <span className="font-semibold text-lg hidden md:block">
-                TaskHuh
+                TaskHub
               </span>
             </div>
           )}
