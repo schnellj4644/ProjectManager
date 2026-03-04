@@ -50,7 +50,7 @@ export const ProjectCard = ({
                 <span>Progress</span>
                 <span>{progress}%</span>
               </div>
-              <Progress value={progress} className="h-2 bg-blue-600" />
+              <Progress value={progress} className="h-2 [&>*]:bg-blue-600" />
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center text-sm gap-2 text-muted-foreground">
